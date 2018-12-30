@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Console by Examples</title>
+    <style>
+        h1 {
+            color: #1e73be;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 40px;
+            margin: 0 0 20px;
+        }
+
+
+        h2 {
+            color: #111;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 22px;
+            margin: 5px 0 8px;
+        }
+
+        pre {
+            background-color: #EBECE4;
+            border: 1px solid silver;
+            padding: 3px;
+            margin: 0 0 5px;
+            width: 720px;
+        }
+    </style>
+    <script>
+        console.log("JavaScript"); //log a message to console
+
+        // Example 1: Console with Info, Warn and Error
+        console.info('This is information message');
+        console.warn('This is warning message');
+        try {
+            let x = y + 50;
+        } catch (error) {
+            console.error(error);
+        }
+
+        // Example 2: Calculating time difference
+        console.time();
+        for (let x = 1; x < 500000; x++) {
+            let y = x + Math.sin(x);
+        }
+        console.timeEnd();
+
+        // Example 3: String substitutions
+        console.log("Hello %s, your code is %i and your score is %f", "Siken", 11590, 95.20);
+
+        // Example 4: Styling console output
+        console.log("%cRed, %cGreen, %cBlue",
+            "color:red;font-size:25px", "color:green;font-size:21px",
+            "color:blue; font-size:17px; padding:2px; border:1px solid gold");
+
+        // Example 5: Counting
+        function Message(message) {
+            console.log("Hi " + message);
+            if (message === "Siken")
+                console.count("Found [Siken]");
+        }
+
+        Message("Siken");
+        Message("Ambika");
+        Message("John");
+        Message("Siken");
+
+        // Example 6: Assert
+        let x = 10;
+        let y = 5;
+        console.assert(x > y, "X is Larger");
+        x = x = 3;
+        console.assert(x > y, "X is Larger");
+
+        //Example7: Grouping logging
+        var Countries = [{
+            country: "India",
+            cities: ["New Delhi", "Mumbai", "Chennai", "Patna", "Varanasi"]
+        }, {
+            country: "Nepal",
+            cities: ["Kathmandu", "Pokhara", "Patan", "Biratnagar"]
+        }];
+
+        console.group("Countries");
+        Countries.forEach(element => {
+            console.group(element.country);
+            // Nested Grouping
+            element.cities.forEach(element => {
+                console.log(element);
+            });
+            console.groupEnd();
+        });
+        console.groupEnd();
+
+        //Example 8: Displaying array in table
+        var LargestCountries = [
+            "Russia", "Canada", "United States",
+            "China", "Brazil", "Australia", "India"
+        ];
+        console.table(LargestCountries);
+
+        //Example 9: Displaying an array of arrays in table
+        var CountriesWithCapital = [
+            ["Russia", "Moscow"],
+            ["Canada", "Ottawa"],
+            ["United States", "Washington, D.C."],
+            ["China", "Beijing"],
+            ["Brazil", "Brasília"],
+            ["Australia", "Canberra"],
+            ["India", "New Delhi"]
+        ];
+        console.table(CountriesWithCapital);
+
+        //Example 10: Displaying an array of objects in table
+        function Person(FirstName, LastName, Age) {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Age = Age;
+        }
+
+        var amit = new Person("Amit", "Bajaj", 35);
+        var john = new Person("John", "Smith", 28);
+        var misha = new Person("Misha", "Kapoor", 13);
+
+        console.table([amit, john, misha]);
+
+        //Displaying only FirstName and LastName
+        console.table([amit, john, misha], ["FirstName", "LastName"]);
+    </script>
+</head>
+
+<body>
+    <article>
+        <h1>JavaScript debugging with Console</h1>
+        <hr />
+        <span><b>Siken Dongol</b><br />Dec 29, 2018</span>
+        <h2>Example 1: Console with Info, Warn and Error</h2>
+        <pre>
+        console.info('This is information message');
+        console.warn('This is warning message');
+        try {
+            let x = y + 50;
+        } catch (error) {
+            console.error(error);
+        }</pre>
+        ​<picture>
+            <img src="Console-01.png" alt="Example 1: Console with Info, Warn and Error">
+        </picture>
+
+        <h2>Example 2: Calculating time difference</h2>
+        <pre>
+        console.time();
+        for (let x = 1; x &lt; 500000; x++) {
+            let y = x + Math.sin(x);
+        }
+        console.timeEnd();</pre>
+        ​<picture>
+            <img src="Console-02.png" alt="Example 2: Calculating time difference">
+        </picture>
+
+        <h2>Example 3: String substitutions</h2>
+        <pre>
+        console.log("Hello %s, your code is %i and your score is %f", "Siken", 11590, 95.20);</pre>
+        ​<picture>
+            <img src="Console-03.png" alt="Example 3: String substitutions">
+        </picture>
+
+        <h2>Example 4: Styling console output</h2>
+        <pre>
+        console.log("%cRed, %cGreen, %cBlue",
+            "color:red;font-size:25px", "color:green;font-size:21px",
+            "color:blue; font-size:17px; padding:2px; border:1px solid gold");</pre>
+        ​<picture>
+            <img src="Console-04.png" alt="Styling console output">
+        </picture>
+
+        <h2>Example 5: Counting</h2>
+        <pre>
+        function Message(message) {
+            console.log("Hi " + message);
+            if (message === "Siken")
+                console.count("Found [Siken]");
+        }
+
+        Message("Siken");
+        Message("Ambika");
+        Message("John");
+        Message("Siken");</pre>
+        ​<picture>
+            <img src="Console-05.png" alt="Example 5: Counting">
+        </picture>
+
+        <h2>Example 6: Assert</h2>
+        <pre>
+        let x = 10;
+        let y = 5;
+        console.assert(x > y, "X is Larger");
+        x = x = 3;
+        console.assert(x > y, "X is Larger");</pre>
+        ​<picture>
+            <img src="Console-06.png" alt="Example 6: Assert">
+        </picture>
+
+        <h2>Example 7: Grouping logging</h2>
+        <pre>
+        var Countries = [{
+            country: "India",
+            cities: ["New Delhi", "Mumbai", "Chennai", "Patna", "Varanasi"]
+        }, {
+            country: "Nepal",
+            cities: ["Kathmandu", "Pokhara", "Patan", "Biratnagar"]
+        }];
+
+        console.group("Countries");
+        Countries.forEach(element => {
+            console.group(element.country);
+            // Nested Grouping
+            element.cities.forEach(element => {
+                console.log(element);
+            });
+            console.groupEnd();
+        });
+        console.groupEnd();</pre>
+        ​<picture>
+            <img src="Console-07.png" alt="Example 7: Grouping logging">
+        </picture>
+
+        <h2>Example 8: Displaying array in table</h2>
+        <pre>
+        var LargestCountries = [
+            "Russia", "Canada", "United States",
+            "China", "Brazil", "Australia", "India"
+        ];
+        console.table(LargestCountries);</pre>
+        ​<picture>
+            <img src="Console-08.png" alt="Example 8: Displaying array in table">
+        </picture>
+
+        <h2>Example 9: Displaying an array of arrays in table</h2>
+        <pre>
+        var CountriesWithCapital = [
+            ["Russia", "Moscow"],
+            ["Canada", "Ottawa"],
+            ["United States", "Washington, D.C."],
+            ["China", "Beijing"],
+            ["Brazil", "Brasília"],
+            ["Australia", "Canberra"],
+            ["India", "New Delhi"]
+        ];
+        console.table(CountriesWithCapital);</pre>
+        ​<picture>
+            <img src="Console-09.png" alt="Displaying an array of arrays in table">
+        </picture>
+
+        <h2>Example 10: Displaying an array of objects in table</h2>
+        <pre>
+        function Person(FirstName, LastName, Age) {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Age = Age;
+        }
+
+        var amit = new Person("Amit", "Bajaj", 35);
+        var john = new Person("John", "Smith", 28);
+        var misha = new Person("Misha", "Kapoor", 13);
+
+        console.table([amit, john, misha]);
+
+        //Displaying only FirstName and LastName
+        console.table([amit, john, misha], ["FirstName", "LastName"]);</pre>
+
+        ​<picture>
+            <img src="Console-10.png" alt="Example 10: Displaying an array of objects in table">
+        </picture>
+    </article>
+</body>
+
+</html>
